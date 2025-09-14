@@ -305,4 +305,3 @@ const FinalRevealScreen = ({ onReset }: { onReset: () => void }) => (
       </motion.div>
     </motion.div>
 );
-);
