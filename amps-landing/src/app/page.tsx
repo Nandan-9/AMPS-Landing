@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, {useState, useEffect, useRef, JSX} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, Repeat } from "lucide-react";
 
@@ -222,11 +222,15 @@ interface FinalRevealScreenProps {
   onReset: () => void;
 }
 
+// --- The Cinematic Final Reveal Screen ---
 const finalScreenVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.8, delayChildren: 0.5 },
+    transition: {
+      staggerChildren: 0.8, // Time between each child animation
+      delayChildren: 0.5,   // Wait before starting the first child
+    },
   },
 };
 
@@ -235,17 +239,23 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeInOut" } },
 };
 
-const FinalRevealScreen: React.FC<FinalRevealScreenProps> = ({ onReset }) => (
+const FinalRevealScreen = ({ onReset }: { onReset: () => void }) => (
     <motion.div
         key="won"
-        variants={finalScreenVariants}
+        variants={finalScreenVariants}   // ✅ fixed spelling
         initial="hidden"
         animate="visible"
         className="z-10 flex flex-col items-center text-center p-8 md:p-12"
     >
       <motion.div variants={itemVariants}>
-        {/* Chalice + Blade */}
-        <svg width="100" height="120" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+        {/* The Chalice and Blade Symbol */}
+        <svg
+            width="100"
+            height="120"
+            viewBox="0 0 100 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
           <motion.path
               d="M50 110L5 10L95 10L50 110Z"
               stroke="#FBBF24"
@@ -273,10 +283,13 @@ const FinalRevealScreen: React.FC<FinalRevealScreenProps> = ({ onReset }) => (
         Veritas Invenitur
       </motion.h1>
 
-      <motion.p variants={itemVariants} className="mt-6 max-w-xl text-lg text-stone-300">
-        Beneath the silent stars and watchful eyes of history, the path concludes. You have
-        followed the echoes of the Priory and proven worthy. The legacy is now yours to
-        protect.
+      <motion.p
+          variants={itemVariants}
+          className="mt-6 max-w-xl text-lg text-stone-300"
+      >
+        Beneath the silent stars and watchful eyes of history, the path concludes.
+        You have followed the echoes of the Priory and proven worthy. The legacy
+        is now yours to protect.
       </motion.p>
 
       <motion.div variants={itemVariants}>
@@ -291,4 +304,5 @@ const FinalRevealScreen: React.FC<FinalRevealScreenProps> = ({ onReset }) => (
         </motion.button>
       </motion.div>
     </motion.div>
+);
 );
