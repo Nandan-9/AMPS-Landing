@@ -26,15 +26,13 @@ const INITIAL_STATE = {
 };
 
 // --- Main Component ---
-export default function DaVinciClue() {
+export default function Home() {
   const [state, setState] = useState(INITIAL_STATE);
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   // Clear error when user starts typing again
   useEffect(() => {
-    if (state.error) {
-      setState(prevState => ({ ...prevState, error: "" }));
-    }
+    setState(prevState => ({ ...prevState, error: "" }));
   }, [state.input]);
   
   // Auto-focus input when clue changes
