@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BookOpen, Repeat } from "lucide-react"; // Refined icon set
 
@@ -50,7 +50,7 @@ export default function Home() {
     setState(INITIAL_STATE);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (state.input.trim().toLowerCase() === clues[state.currentIndex].password.toLowerCase()) {
       if (state.currentIndex < clues.length - 1) {
