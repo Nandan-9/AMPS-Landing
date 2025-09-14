@@ -34,6 +34,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/home/devn/AMPS-Landing/amps-landing/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -53,6 +54,7 @@
       <updated>1757825945750</updated>
       <workItem from="1757825946831" duration="534000" />
       <workItem from="1757826485572" duration="715000" />
+      <workItem from="1757838223603" duration="9358000" />
     </task>
     <servers />
   </component>
