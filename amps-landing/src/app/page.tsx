@@ -15,7 +15,7 @@ const clues = [
 
   { title: "What is broken can still point the way forward.", password: "fract5" },
 
-  { title: "Only those who look twice will see the hidden path.", password: "echo21" },
+  { title: "Only those who look twice will see the hidden path.", password: "echo2" },
 
 ];
 const INITIAL_STATE = {
