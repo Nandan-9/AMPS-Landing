@@ -16,7 +16,7 @@ const rounds = [
       },
       {
         title: "A scientist who turned lightning into his tool, often linked with electricity and invention. His name shines in this story.",
-        password: "tesla",
+        password: ["tesla","Nikola Tesla", "nikola tesla",]
       },
       {
         title: "The audience never claps when the bird disappears, but only when it returns. What is that final, astonishing act called?",
