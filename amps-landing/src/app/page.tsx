@@ -20,7 +20,7 @@ const rounds = [
       },
       {
         title: "The audience never claps when the bird disappears, but only when it returns. What is that final, astonishing act called?",
-        password: "prestige",
+        password: ["prestige", "the prestige"]
       },
     ],
   },
@@ -30,11 +30,11 @@ const rounds = [
     questions: [
       {
         title: "Neither wings of steel nor four-wheeled chariots — their escape thunders on beasts of metal that balance on just two.",
-        password: "bikes",
+        password: ["bikes", "bike"]
       },
       {
         title: "When chaos makes its move, an equal force rises to contain it. In the dance of crime and pursuit, who plays the counterbalance?",
-        password: "police",
+        password: ["police", "cops"],
       },
       {
         title: "Three tales, one chase: the road is their stage, the mask their shield, the speed their language. Name the high-octane franchise.",
@@ -49,7 +49,7 @@ const rounds = [
     questions: [
       {
         title: "A friendship turns into code, code turns into influence, and influence turns into a platform the world cannot ignore.",
-        password: "socialnetwork", // "The Social Network"
+        password: ["social network", "the social network"]
       },
       {
         title: "Rules are written to survive a world overrun by the undead. A motley crew follows them, moving across a dangerous land.",
@@ -60,15 +60,25 @@ const rounds = [
         password: [
           "batmanvsuperman",
           "batman vs superman",
-          "batman vs superman: dawn of justice"
+          "batman v superman",
+          "batman v superman dawn of justice",
+          "batman vs superman dawn of justice",
+          "batman v superman: dawn of justice",
+          "batman vs superman: dawn of justice",
+          "dawn of justice",
         ]
+
       }
     ],
   },
-    {
+  {
     roundTitle: "The whole",
     gradient: "from-red-900 via-black to-black",
-
+    images: [
+      "/The_Prestige.webp",
+      "/dhoom-poster.jpg",
+      "/jesse-eisenberg.webp",
+    ],
     questions: [
       {
         title: "Threads of magic, echoes of sirens, and the mark of one man — follow the weave to the story that binds them all.",
@@ -151,7 +161,7 @@ export default function Home() {
           transition={{ duration: 1.5 }}
           className="text-2xl md:text-4xl font-bold drop-shadow-lg"
         >
-           Congratulations! The Illusion is over, the final reveal is here- and you stand as the true master of <i>Da Vinci Clues</i>!
+          Congratulations! The Illusion is over, the final reveal is here- and you stand as the true master of <i>Da Vinci Clues</i>!
         </motion.h1>
         <p className="text-lg md:text-xl text-gray-300">You’ve solved all the mysteries.</p>
       </motion.main>
@@ -208,6 +218,32 @@ export default function Home() {
         <Image src="/logo.png" alt="Logo" width={80} height={80} className="drop-shadow-lg" />
         <h3 className="text-xl font-semibold mt-2">{currentRound.roundTitle}</h3>
       </motion.div>
+      {/* Round-specific images (used in The Whole round) */}
+      {currentRound.images && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="flex flex-wrap justify-center gap-4 mb-6"
+        >
+          {currentRound.images.map((img, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.3 }} // sequential reveal ✨
+            >
+              <Image
+                src={img}
+                alt={`Clue ${i + 1}`}
+                width={220}
+                height={300}
+                className="rounded-lg shadow-lg"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
 
       {/* Question */}
       <AnimatePresence mode="wait">
@@ -223,7 +259,6 @@ export default function Home() {
         </motion.h2>
       </AnimatePresence>
 
-      {/* Input + Button */}
       <form onSubmit={checkPassword} className="flex flex-col items-center space-y-4">
         <motion.input
           type="text"
